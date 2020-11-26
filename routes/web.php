@@ -24,21 +24,39 @@ Route::get('/admin/', function () {
 
 // Todos User
 
-Route::get('/todos', 'TodoController@TodoStore')->name('TodoStore');
+Route::get('/todos', [TodoController::class, 'IndexTodos']);
 
-//Route::get('/todos', 'TodoController@TodoStore')->name('TodoStore');
-//Route::get('/todos', 'TodoController@Index');
-//Route::get('/todos', [TodoController::class, 'TodoStore']);
-//Route::get('/users', [UserController::class, 'index']);
+Route::get('/todos/mostrar/{todo}', [TodoController::class, 'ShowTodos'])->name('Todos.Show');
+
 
 // Todos Admin
 
 Route::get('admin/todos', [TodoController::class, 'Index'])->name('Todos.Index');
 
-Route::get('admin/todos/agregar', [TodoController::class, 'Index'])->name('Todos.Create');
-Route::post('admin/todos', [TodoController::class, 'Index'])->name('Todos.Store');
+Route::get('admin/todos/agregar', [TodoController::class, 'Create'])->name('Todos.Create');
+Route::post('admin/todos', [TodoController::class, 'Store'])->name('Todos.Store');
+
+Route::get('admin/todos/mostrar/{todo}', [TodoController::class, 'Show'])->name('Todos.Show');
+
+Route::get('admin/todos/editar/{todo}', [TodoController::class, 'Edit'])->name('Todos.Edit');
+Route::put('admin/todos/{todo}', [TodoController::class, 'Update'])->name('Todos.Update');
+
+Route::get('admin/todos/eliminar/{todo}', [TodoController::class, 'Delete'])->name('Todos.Delete');
+Route::delete('admin/todos/{todo}', [TodoController::class, 'Destroy'])->name('Todos.Destroy');
 
 
+// Independents Admin
+
+Route::get('admin/independents', [IndependentController::class, 'Index'])->name('Independents.Index');
+
+Route::get('admin/studios', [StudioController::class, 'Index'])->name('Studios.Index');
+
+Route::get('admin/pendings', [PendingController::class, 'Index'])->name('Pendings.Index');
+
+Route::get('admin/delivereds', [DeliveredController::class, 'Index'])->name('Delivereds.Index');
+
+
+// Auth
 
 Auth::routes();
 

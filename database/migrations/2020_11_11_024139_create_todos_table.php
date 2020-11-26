@@ -17,14 +17,14 @@ class CreateTodosTable extends Migration
             $table->id();
             $table->string('FechaT');
             $table->string('FechaE');
-            $table->string('Escuela');
+            $table->string('Escuela')->nullable();
             $table->string('Nombre');
-            $table->string('DiasA');
-            $table->string('Grupo');
+            $table->string('DiasA')->nullable();
+            $table->string('Grupo')->nullable();
             $table->string('Tel');
             $table->string('Paquete');
             $table->string('Nota')->nullable();
-            $table->string('Estatus');
+            $table->string('Estatus')->nullable();
             $table->timestamps();
         });
     }

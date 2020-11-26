@@ -1,10 +1,10 @@
 @extends('layoutsAdmin.app')
-@section('title', 'Todos')
+@section('title', 'Independents')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>TODO A</h1>
+                <h1>INDEPENDIENTES A</h1>
                 <a class="text-right" href="{{route('Todos.Create')}}">Crear nuevo</a>
                 <table class="table">
                 <thead>
@@ -21,6 +21,8 @@
                     </tr>
                 </thead>
                 <tbody>
+                @if($todos->Escuela == "Independiente") 
+
                 @foreach($todos as $todo)
                     <tr>
                         <th scope="row">{{ $loop->index + 1}}</th>
@@ -38,6 +40,7 @@
                         </td>
                     </tr>
                     @endforeach
+                @endif
                 </tbody>
                 </table>
             </div>
